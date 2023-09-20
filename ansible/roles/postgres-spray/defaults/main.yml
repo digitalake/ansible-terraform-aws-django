@@ -1,0 +1,12 @@
+---
+# defaults file for postgres-spray
+postgres_version: 12
+postgres_packages:
+  - "postgresql-{{ postgres_version }}"
+#  - "postgresql-client-{{ postgres_version }}"
+#  - "libpq-dev"
+#  - "postgresql-server-dev-{{ postgres_version }}" 
+
+postgres_listen_addresses: "*"
+
+postgres_app_role_addresses: 0.0.0.0/0

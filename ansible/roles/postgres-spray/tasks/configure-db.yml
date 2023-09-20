@@ -1,0 +1,32 @@
+- name: Ensure PostgreSQL database exists
+  postgresql_db:
+    name: "{{ DB_NAME }}"
+    state: present
+
+- name: Create PostgreSQL user
+  postgresql_user:
+    db: "{{ DB_NAME }}"
+    name: "{{ DB_USER }}"
+    password: "{{ DB_PASSWORD }}"
+    encrypted: yes
+
+- name: Make sure Postgres listens inbound
+  become: true
+  lineinfile:
+    dest: "/etc/postgresql/{{ postgres_version }}/main/postgresql.conf"
+    regexp: '^#?listen_addresses='
+    line: "listen_addresses='{{ postgres_listen_addresses }}'"
+    state: present
+    create: yes
+  notify: restart postgres
+
+- name: Ensure app is able to make connects
+  community.postgresql.postgresql_pg_hba:
+    dest: /etc/postgresql/{{ postgres_version }}/main/pg_hba.conf
+    contype: host
+    users: "{{ DB_USER }}"
+    databases: "{{ DB_NAME }}"
+    source: "{{ postgres_app_role_addresses }}"
+    method: md5
+    create: true
+  notify: restart postgres

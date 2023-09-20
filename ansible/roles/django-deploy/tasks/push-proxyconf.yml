@@ -1,0 +1,6 @@
+- name: Copy Nginx proxy config file.
+  ansible.builtin.copy:
+    src: nginx.conf
+    dest: "{{ ansible_user_dir }}/nginx.conf"
+    mode: 0644
+    force: true

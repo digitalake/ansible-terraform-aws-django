@@ -1,0 +1,7 @@
+---
+- name: Copy generated Docker Compose file.
+  template:
+    src: docker-compose.yml.j2
+    dest: "{{ ansible_user_dir }}/docker-compose.yml"
+    mode: 0644
+    force: true

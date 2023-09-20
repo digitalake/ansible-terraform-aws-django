@@ -1,0 +1,26 @@
+---
+docker_add_repo: true
+docker_repo_url: https://download.docker.com/linux
+docker_apt_gpg_key: "{{ docker_repo_url }}/{{ ansible_distribution | lower }}/gpg"
+docker_apt_ignore_key_error: true
+docker_apt_repository: "deb [arch={{ docker_apt_arch }}] {{ docker_repo_url }}/{{ ansible_distribution | lower }} {{ ansible_distribution_release }} {{ docker_apt_release_channel }}"
+docker_apt_arch: 'amd64'
+docker_apt_release_channel: stable
+
+docker_users: ["ubuntu"]
+
+docker_edition: 'ce'
+docker_packages:
+  - "docker-{{ docker_edition }}"
+  - "docker-{{ docker_edition }}-cli"
+  - "docker-{{ docker_edition }}-rootless-extras"
+  - "containerd.io"
+docker_packages_state: present
+
+docker_compose_version: "v2.11.1"
+docker_compose_path: /usr/local/bin/docker-compose
+docker_compose_arch: "{{ ansible_architecture }}"
+docker_compose_url: "https://github.com/docker/compose/releases/download/{{ docker_compose_version }}/docker-compose-linux-{{ docker_compose_arch }}"
+
+
+

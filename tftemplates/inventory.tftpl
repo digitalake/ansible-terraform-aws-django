@@ -1,0 +1,17 @@
+[apps]
+%{ for private_ip in app_ips ~}
+${private_ip}
+%{ endfor ~}
+
+[databases]
+%{ if length(db_ip) > 0 ~}
+${db_ip}
+%{ endif ~}
+
+[bastion]
+%{ if length(bastion_ip) > 0 ~}
+${bastion_ip}
+%{ endif ~}
+
+
+

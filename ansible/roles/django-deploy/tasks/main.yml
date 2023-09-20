@@ -1,0 +1,23 @@
+---
+- name: Include vars files from vars dir.
+  ansible.builtin.include_vars:
+    dir: vars
+    extensions:
+      - 'yml'
+
+- include_tasks: push-compose.yml
+- include_tasks: push-envconf.yml
+- include_tasks: push-proxyconf.yml
+- include_tasks: registry-login.yml
+
+
+- name: Run `docker-compose up`.
+  community.docker.docker_compose:
+    project_src: "{{ ansible_user_dir }}"
+    project_name: "{{ PROJECT_NAME }}"
+  register: compose_output
+
+- name: Show results
+  ansible.builtin.debug:
+    var: compose_output
+

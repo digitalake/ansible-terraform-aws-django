@@ -1,0 +1,14 @@
+%{ if length(bastion_ip) > 0 ~}
+Host ${bastion_ip}
+  IdentityFile ~/.ssh/virt
+  User ubuntu
+  StrictHostKeyChecking no
+  UserKnownHostsFile /dev/null
+
+Host * !${bastion_ip}
+  IdentityFile ~/.ssh/virt
+  User ubuntu
+  ProxyJump ${bastion_ip}
+  StrictHostKeyChecking no
+  UserKnownHostsFile /dev/null
+%{ endif ~}

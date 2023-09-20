@@ -1,0 +1,12 @@
+Host 3.238.144.103
+  IdentityFile ~/.ssh/virt
+  User ubuntu
+  StrictHostKeyChecking no
+  UserKnownHostsFile /dev/null
+
+Host * !3.238.144.103
+  IdentityFile ~/.ssh/virt
+  User ubuntu
+  ProxyJump 3.238.144.103
+  StrictHostKeyChecking no
+  UserKnownHostsFile /dev/null

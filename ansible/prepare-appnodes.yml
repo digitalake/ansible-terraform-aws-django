@@ -1,0 +1,5 @@
+---
+- hosts: apps
+  roles:
+    - docker-spray
+  become: true

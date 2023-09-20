@@ -1,0 +1,9 @@
+---
+# vars file for django-deploy
+APP_IMAGE: ivanopulo/personal:djangoapp-2.0
+
+NGINX_PROXY_IMAGE: nginx:1.25.2
+
+DB_PORT: 5432
+
+PROJECT_NAME: ITSyndicate

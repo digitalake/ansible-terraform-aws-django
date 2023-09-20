@@ -1,0 +1,7 @@
+---
+- name: Copy generated .env file.
+  template:
+    src: app.env.j2
+    dest: "{{ ansible_user_dir }}/app.env"
+    mode: 0644
+    force: true
