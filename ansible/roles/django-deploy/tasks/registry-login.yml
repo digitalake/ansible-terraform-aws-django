@@ -1,5 +1,5 @@
 ---
 - name: Log into DockerHub.
   community.docker.docker_login:
-    username: "{{ CI_REGISTRY_USER }}"
-    password: "{{ CI_REGISTRY_PASSWORD }}"
+    username: "{{ DOCKER_REGISTRY_USER }}"
+    password: "{{ DOCKER_REGISTRY_PASSWORD }}"
