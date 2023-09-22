@@ -180,7 +180,7 @@ For dynamic database host configuration, Terraform also creates and additional v
 
 Necessary files for application deployment are:
 
-- nginx custom _nginx.conf_ which is sources form _/files_ dir of the Deployment role
+- custom _nginx.conf_ which is sourced from _/files_ dir of the Deployment role
 - _docker-compose.yml_  which is generated from template and includes values from _app.env_
 - _app.env_ with env vars for Django application
 
