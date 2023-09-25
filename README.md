@@ -156,6 +156,8 @@ exec gunicorn mysite.wsgi:application \
     --workers 3
 ```
 
+> From Gunicorn docs: ... we recommend (2 x $num_cores) + 1 as the number of workers to start off with.
+
 After an image was built and tested locally, it was pushed to the Dockerhub.
 
 <img src="https://github.com/digitalake/ansible-terraform-aws-django/assets/109740456/1b4b3758-259e-420f-a20c-d9a4d02cd534" width="500">
